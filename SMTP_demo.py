@@ -7,9 +7,9 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 import smtplib
 
-_user = '461547449@qq.com'
-_pwd = 'enamwkhnwbdjbjci'       #登陆QQsmtp服务器密码
-_to = '461547449@qq.com'
+_user = 'xxxxxxxxx@qq.com'
+_pwd = '***********'       #登陆QQsmtp服务器密码 去QQ邮箱设置账户中生成授权码
+_to = 'xxxxxxxxx@qq.com'
 
 
 msg = MIMEMultipart()								#创建多文本格式的传输类型
@@ -17,7 +17,7 @@ msg.attach(MIMEText('test','plain','utf-8'))         #发送的文本内容
 # 添加附件就是加上一个MIMEBase，从本地读取一个图片:
 with open(os.getcwd()+'\liuyan.jpg','rb') as f:
 	# 设置附件的MIME和文件名，这里是png类型:
-	mime = MIMEBase('image','png',filename='liuyan.jpg')
+	mime = MIMEBase('image','jpg',filename='liuyan.jpg')
 	# 设置必要的头信息
 	mime.add_header('Content-Disposition','attachment',filename='liuyan.jpg')
 	mime.add_header('Content-ID','<0>')
@@ -28,7 +28,7 @@ with open(os.getcwd()+'\liuyan.jpg','rb') as f:
 	encoders.encode_base64(mime)
 	msg.attach(mime)
 
-msg['Subject'] = '12-方玉锋-py201706017'    #主题信息
+msg['Subject'] = 'subjectmessage'    #主题信息
 msg['From'] = _user              			#己方地址
 msg['To'] = _to                  			#对方地址
 
@@ -49,11 +49,11 @@ except smtplib.SMTPException as e:
 msg = MIMEMultipart()								#创建多文本格式的传输类型
 msg.attach(MIMEText('<html><body><img src="cid:0"/></body></html>',
 						'html',
-						'utf-8'))         #发送的文本内容
+						'utf-8'))         #发送的html内容
 # 添加附件就是加上一个MIMEBase，从本地读取一个图片:
 with open(os.getcwd()+'\liuyan.jpg','rb') as f:
 	# 设置附件的MIME和文件名，这里是png类型:
-	mime = MIMEBase('image','png',filename='liuyan.jpg')
+	mime = MIMEBase('image','jpg',filename='liuyan.jpg')
 	# 设置必要的头信息
 	mime.add_header('Content-Disposition','attachment',filename='liuyan.jpg')
 	mime.add_header('Content-ID','<0>')
@@ -64,7 +64,7 @@ with open(os.getcwd()+'\liuyan.jpg','rb') as f:
 	encoders.encode_base64(mime)
 	msg.attach(mime)
 
-msg['Subject'] = '12-方玉锋-py201706017'    #主题信息
+msg['Subject'] = 'subjectmessage'    #主题信息
 msg['From'] = _user              			#己方地址
 msg['To'] = _to                  			#对方地址
 
